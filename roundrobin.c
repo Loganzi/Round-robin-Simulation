@@ -29,23 +29,24 @@ void read_file()
 }
 void framed_rectangle(int x, int y)
 {
-	glColor3f(0.5f, 1.0f, 0.50f);
+	glColor3f(0.43, 0.85, 0.85);
 	glBegin(GL_QUADS);
-	glVertex2i(x, y);
-	glVertex2i(x+10, y);
-	glVertex2i(x+10, y+10);
-	glVertex2i(x,y+10);
+		glVertex2i(x, y);
+		glVertex2i(x+10, y);
+		glVertex2i(x+10, y+10);
+		glVertex2i(x,y+10);
 	glEnd();
 	glColor3f(0.0f, 0.0f, 0.0f); // Let it be yellow.
 	glBegin(GL_LINE_STRIP);
-	glVertex2i(x, y);
-        glVertex2i(x+10, y);
-        glVertex2i(x+10, y+10);
-        glVertex2i(x,y+10);
+		glVertex2i(x, y);
+        	glVertex2i(x+10, y);
+        	glVertex2i(x+10, y+10);
+		glVertex2i(x,y+10);
 	glEnd();
 	sleep(1);
 	glFlush();
 }
+
 void drawstring(int x, int y, char *string,void *font)
 {
 	int len, i;
@@ -62,7 +63,7 @@ void output(int x, int y, char *string){
 	len=(int) strlen(string);
 	for (i = 0; i < len; i++)
 	{
-		glutBitmapCharacter(GLUT_BITMAP_TIMES_ROMAN_24,string[i]);
+		glutBitmapCharacter(GLUT_BITMAP_HELVETICA_18,string[i]);
 	}
 }
 void frontscreen(void)
@@ -70,45 +71,50 @@ void frontscreen(void)
 
         glClear(GL_COLOR_BUFFER_BIT);
         glLoadIdentity();
-        glColor3f(0,0,0);
-	output(120,5," Press key `n` to go to next screen");
-    	glColor3f(0,0,0);
-        output(5,160," PES INSTITUTE OF TECHNOLOGY");
-        glColor3f(0,0,0);
-        output(10.0,150,"DEPARTMENT OF COMPUTER SCIENCE AND ENGINEERING");
-        glColor3f(0,0,0);
-        output(60,130,"A Mini Project On:-");
-        glColor3f(0,0,0);
-        output(38,120,"\"ROUND ROBIN SIMULATION USING OPENGL\"");
-        glColor3f(0,0,0);
-        output(40,100,"By :");
+        glColor3f(0.57,0.43,0.87);
+		output(0,5," Press: Key `t` to go to next screen, Key 'x' to exit");
+    	glColor3f(0.13,0.55,0.41);
+        	output(0,160," PES INSTITUTE OF TECHNOLOGY");
+        glColor3f(0.13,0.55,0.41);
+        	output(1,150,"DEPARTMENT OF COMPUTER SCIENCE AND ENGINEERING");
+        glColor3f(0.13,0.55,0.41);
+        	output(0,130,"A Mini Project On:-");
+        glColor3f(0.13,0.13,0.55);
+        	output(8,120,"\"ROUND ROBIN SIMULATION USING OPENGL\"");
+        glColor3f(0.65,0.49,0.24);
+        	output(4,100,"By :");
         glBegin(GL_LINES);
-        glVertex2f(40,98);
-        glVertex2f(50,98);
+        	glVertex2f(4,98);
+        	glVertex2f(10,98);
         glEnd();
-        glColor3f(0,0,0);
-        output(40,90,"Rashmi(1PE17CS119), Priti(1PE17CS115) and Loganyaa(1PE17CS126)");
-        output(40,80,"");
-        glColor3f(0,0,0);
-        output(40,60,"Under the Guidence of :");
+        glColor3f(0.65,0.49,0.24);
+        	output(4,90,"1. Priti(1PE17CS115)");
+		output(4,82,"2. Rashmi(1PE17CS119)");
+		output(4,74,"3. Loganyaa(1PE17CS126)");
+        	output(4,80,"");
+        glColor3f(0.53,0.12,0.47);
+        	output(4,50,"Under the Guidence of :");
         glBegin(GL_LINES);
-        glVertex2f(40,58);
-        glVertex2f(98,58);
+        	glVertex2f(4,48);
+        	glVertex2f(50,48);
         glEnd();
-        glColor3f(0,0,0);
-        output(72,30,"(B.E.)");
-        output(70,20,"Assistant Professor,Dept. of CSE");
+        glColor3f(0.53,0.12,0.47);
+        	output(7,38,"Mrs. Shubha Raj K.B");
+        	output(7,30,"Assistant Professor,Dept. of CSE");
         glFlush();
 
 }
 void infoscreen()
 {
 	glClear(GL_COLOR_BUFFER_BIT);
-	glColor3f(0.0,0.0,0.0);
-	output(25,140,"WELCOME TO ROUND ROBIN SIMULATION");
-	output(50,100,"1");
-	output(50,80,"2.");
-	output(50,60,"3.");
+	glColor3f(0.13,0.13,0.55);
+		output(0,120,"WELCOME TO ROUND ROBIN SIMULATION");
+		output(5,100,"1. Provide input to the program in <input.txt> in the following format:");
+		output(5,90,"   {Process i} {ith Arrival Time} {ith Burst time}... {Quantum time}");
+		output(5,80,"2. The program calls the Java file to run and execute the round robin algorithm");
+		output(5,70,"   and stores the resulting answer in <output.txt>");
+		output(5,60,"3. Press 'n' to go to simulation screen to understand how the proccesses");
+		output(5,50,"   enter the Ready Queue and how the Gantt Chart is formed.");
 	glFlush();
 }
 void simulation_screen()
@@ -123,12 +129,14 @@ void simulation_screen()
 	int j = 0;
 	char ch;
 	glColor3f(0,0,0);
-	output(x, y-5, "0");
+		output(x, y-5, "0");
 	while(gantt_chart[i] != '\0')
 	{
 		char time[3];
 		char process[3];
 		int k = 0;
+		glColor3f(0.13,0.13,0.55);
+			output(50,140,"Ready Queue simulation:");
 		while(ready_queue[j] != '|' && ready_queue[j] != '\0')
 		{
 			char q_process[3];
@@ -159,14 +167,18 @@ void simulation_screen()
 		{
 			time[k++] = ch;
 		}
+		glColor3f(0.13,0.13,0.55);
+			output(50,75,"Gantt simulation:");
 		framed_rectangle(x, y);
 		glColor3f(0,0,0);
-		output(x+2, y+4, process);
+			output(x+2, y+4, process);
 		glColor3f(0,0,0);
 		time[k] = '\0';
-		output(x+8, y-5, time);
+			output(x+8, y-5, time);
 		x = x+10;
 	}
+	glColor3f(0.57,0.43,0.87);
+		output(0,5," Press: Key 'x' to exit");
 	glFlush();
 }
 void myreshape(int w, int h)
@@ -183,18 +195,17 @@ void myreshape(int w, int h)
  }
 void myinit()
 {
+	glClearColor(0.94,0.81,0.99,1.0);
 	glMatrixMode(GL_PROJECTION);
-  	glLoadIdentity();
-  	glMatrixMode(GL_MODELVIEW);
-  	glClearColor(1.0,1.0,1.0,0.0);
-
+	glLoadIdentity();
+	gluOrtho2D(0.0,499.0,0.0,499.0);
 }
 void display()
 {
    	glClear(GL_COLOR_BUFFER_BIT);
 	if(df==10)
 		infoscreen();
-	if(df == 0)
+	if(df==0)
 		frontscreen();
 	if(df==2)
 		simulation_screen();
@@ -205,6 +216,8 @@ void keyboard(unsigned char key,int x,int y)
 		df=2;
 	if(key =='t')
 		df =10;
+	if(key == 'x')
+		exit(0);
 	display();
 }
 int main(int argc,char **argv)
@@ -213,8 +226,10 @@ int main(int argc,char **argv)
   	df = 0;
   	glutInit(&argc,argv);
 	glutInitDisplayMode(GLUT_SINGLE|GLUT_RGB);
+	glutInitWindowSize(900,900);
+	glutInitWindowPosition(120,0);
   	glutCreateWindow("Round robin");
-	glutFullScreen();
+	//glutFullScreen();
   	glutReshapeFunc(myreshape);
   	glutDisplayFunc(display);
   	glutKeyboardFunc(keyboard);
