@@ -8,3 +8,8 @@ javac SchedulingImp.java </br></br>
 gcc roundrobin.c -lGL -lGLU -lglut</br></br>
 Run:</br>
 ./a.out
+# Operating the Application
+<i>First screen is automatic </i></br>
+Press 't' to go to information Screen </br>
+Press 'n' to go to simulation Screen </br>
+Press 'x' to exit (If in simulation screen, wait till simulation is done.) </br>
